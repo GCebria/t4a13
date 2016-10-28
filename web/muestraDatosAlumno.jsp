@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Los datos de alumno son: </h1><br>
+        <br><b>Nombre: </b>
+        <br><b>Primer apellido: </b>
+        <br><b>Segundo apellido: </b>
+        <br><b>DNI: </b>
     </body>
 </html>
