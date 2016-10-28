@@ -14,7 +14,6 @@
     <body>
         <form action="ServletAlumnos" method="POST">
         <h1>Introduce DNI a buscar</h1><br>
-        <br>
         <input type="text" name="dni" value="" />
         <button type="submit" value="Enviar">Enviar</button>
         </form>

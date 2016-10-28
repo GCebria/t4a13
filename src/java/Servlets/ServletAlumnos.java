@@ -15,31 +15,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ServletAlumnos extends HttpServlet {
+
     ArrayList<AlumnoBean> _listado = new ArrayList<AlumnoBean>();
+
     @Override
     public void init() {
-        AlumnoBean _alumno1 = new AlumnoBean("Gerard", "Cebria", "Leon", "35597712Z");                
+        AlumnoBean _alumno1 = new AlumnoBean("Gerard", "Cebria", "Leon", "35597712Z");
         AlumnoBean _alumno2 = new AlumnoBean("Marc", "San Juan", "Fernando", "35597713S");
         AlumnoBean _alumno3 = new AlumnoBean("Maria", "Perez", "Olivares", "11111111A");
-        
-        
+
         _listado.add(_alumno1);
         _listado.add(_alumno2);
         _listado.add(_alumno3);
 
     }
-    
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String dni = request.getParameter("dni");
-            for (AlumnoBean a: _listado){
-                if (dni.equalsIgnoreCase(a.getDni())){
-                    request.setAttribute("alumno", a);
-                }
+        String dni = request.getParameter("dni");
+        RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/muestraDatosAlumno.jsp");
+        RequestDispatcher rd2 = this.getServletContext().getRequestDispatcher("/errorDNI.jsp");
+
+        for (AlumnoBean a : _listado) {
+            if (dni.equalsIgnoreCase(a.getDni())) {
+                request.setAttribute("alumno", a);
+            } else {
+                request.setAttribute("dni", dni);
+                rd2.forward(request, response);
             }
-            RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/muestraDatosAlumno.jsp");
-            rd.forward(request, response);
+        }
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

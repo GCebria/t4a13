@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Los datos de alumno son: </h1><br>
+        <h1>Los datos de alumno son: </h1>
         <br><b>Nombre: </b> <jsp:getProperty name="alumno" property="nombre" />
         <br><b>Primer apellido: </b><jsp:getProperty name="alumno" property="apellido1" />
         <br><b>Segundo apellido: </b><jsp:getProperty name="alumno" property="apellido2" />
