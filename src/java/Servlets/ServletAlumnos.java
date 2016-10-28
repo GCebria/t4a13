@@ -5,43 +5,41 @@
  */
 package Servlets;
 
+import Entidades.AlumnoBean;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author alumno
- */
 public class ServletAlumnos extends HttpServlet {
+    ArrayList<AlumnoBean> _listado = new ArrayList<AlumnoBean>();
+    @Override
+    public void init() {
+        AlumnoBean _alumno1 = new AlumnoBean("Gerard", "Cebria", "Leon", "35597712Z");                
+        AlumnoBean _alumno2 = new AlumnoBean("Marc", "San Juan", "Fernando", "35597713S");
+        AlumnoBean _alumno3 = new AlumnoBean("Maria", "Perez", "Olivares", "11111111A");
+        
+        
+        _listado.add(_alumno1);
+        _listado.add(_alumno2);
+        _listado.add(_alumno3);
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    }
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletAlumnos</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletAlumnos at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+            String dni = request.getParameter("dni");
+            for (AlumnoBean a: _listado){
+                if (dni.equalsIgnoreCase(a.getDni())){
+                    request.setAttribute("alumno", a);
+                }
+            }
+            RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/muestraDatosAlumno.jsp");
+            rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

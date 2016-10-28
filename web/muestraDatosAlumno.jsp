@@ -13,9 +13,9 @@
     </head>
     <body>
         <h1>Los datos de alumno son: </h1><br>
-        <br><b>Nombre: </b>
-        <br><b>Primer apellido: </b>
-        <br><b>Segundo apellido: </b>
-        <br><b>DNI: </b>
+        <br><b>Nombre: </b> <jsp:getProperty name="alumno" property="nombre" />
+        <br><b>Primer apellido: </b><jsp:getProperty name="alumno" property="apellido1" />
+        <br><b>Segundo apellido: </b><jsp:getProperty name="alumno" property="apellido2" />
+        <br><b>DNI: </b><jsp:getProperty name="alumno" property="dni" />
     </body>
 </html>
