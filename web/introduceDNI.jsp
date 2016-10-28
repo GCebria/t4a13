@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="ServletAlumnos.jsp" method="POST">
+        <form action="ServletAlumnos" method="POST">
         <h1>Introduce DNI a buscar</h1><br>
         <br>
         <input type="text" name="dni" value="" />
